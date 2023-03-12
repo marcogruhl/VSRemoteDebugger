@@ -18,6 +18,29 @@ Make sure the keys are working before proceeding!!
 - In Visual Studio go to `Tools -> Options -> VsRemoteDebugger -> Remote Machine Settings` and modify the access settings
 - In Visual Studio go to `Tools -> (click on) Start Remote Debugger`
 
+## Example Configuration
+
+ASP.NET 7 on Raspberry Pi 3 Model B (win-arm64)
+
+### Local Machine Settings
+
+| Parameter                                  | Value                   |
+| -------------------------------------------| ------------------------|
+| No Debug (just build and deploy to remote) | False                   |
+| Publish                                    | True                    |
+| Use Command Line Arguments                 | True                    |
+
+### Remote Machine Settings
+
+| Parameter                                  | Value                   |
+| -------------------------------------------| ------------------------|
+| .Net Path                                  | /home/pi/.dotnet/dotnet |
+| Group Name                                 | pi                      |
+| IP Address                                 | raspberrypi             |
+| Project folder                             | /home/user/project_name |
+| User Name                                  | pi                      |
+| Visual Studio Debugger Path                | /home/user/vsdbg/vsdbg  |
+
 ## The extension performs the following steps:
 
 1. Builds the solution in Visual Studio 
