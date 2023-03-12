@@ -1,9 +1,11 @@
-# VSRemoteDebugger
+﻿# VSRemoteDebugger
 Remote SSH Debugging tool for Visual Studio 2022 (ARM/ARM64/Raspberry Pi compatible)
 
 [![Build Status](https://dev.azure.com/radutomy0781/radutomy/_apis/build/status/radutomy.VSRemoteDebugger?branchName=refs%2Ftags%2Fv1.5)](https://dev.azure.com/radutomy0781/radutomy/_build/latest?definitionId=5&branchName=refs%2Ftags%2Fv1.5)
 
-
+> **⚠️ Warning ⚠️** Do not trust this repository!
+>
+> This version uses a local static version of the SSH library because current ssh library does not support newer types of certificates.
 
 ## Usage guide
 
