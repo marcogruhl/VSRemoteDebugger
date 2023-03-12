@@ -12,13 +12,34 @@ https://www.onmsft.com/how-to/how-to-generate-an-ssh-key-in-windows-10
 	Set the public key on the remote machine as `~/.ssh/authorized_keys`.
 
 - Make sure that the remote machine has a user able to run non-shell commands without a password. This is already configured on a RPi.
+- Install .NET on the remote machine. Follow the following guide:
+	https://learn.microsoft.com/en-us/dotnet/iot/deployment
+	
+	Run the following command to install .NET:
+	```console
+	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel STS
+	```
+	To simplify path resolution, add a DOTNET_ROOT environment variable and add the .dotnet directory to $PATH with the following commands:
+	```console
+	echo 'export DOTNET_ROOT=$HOME/.dotnet' >> ~/.bashrc
+	echo 'export PATH=$PATH:$HOME/.dotnet' >> ~/.bashrc
+	source ~/.bashrc
+	```
+	Verify the .NET installation with the following command:
+	```console
+	dotnet --version
+	```
+- Install Visual Studio Debugger https://github.com/Microsoft/MIEngine/wiki/Offroad-Debugging-of-.NET-Core-on-Linux---OSX-from-Visual-Studio
+	```console
+	curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
+	```
 
 Make sure the keys are working before proceeding!!
 - Install this extension
 - In Visual Studio go to `Tools -> Options -> VsRemoteDebugger -> Remote Machine Settings` and modify the access settings
-- In Visual Studio go to `Tools -> (click on) Start Remote Debugger`
+- In Visual Studio go to `Tools -> (click on) Start Remote Debugger` or add the `right click on Toolbar -> Customize ... -> VSRemoteDebugger Toolbar`
 
-## Example Configuration
+## Example configuration
 
 ASP.NET 7 on Raspberry Pi 3 Model B (win-arm64)
 
@@ -40,6 +61,12 @@ ASP.NET 7 on Raspberry Pi 3 Model B (win-arm64)
 | Project folder                             | /home/user/project_name |
 | User Name                                  | pi                      |
 | Visual Studio Debugger Path                | /home/user/vsdbg/vsdbg  |
+
+### Command line arguments (optional)
+
+Project -> Properties -> Debug -> General -> Open debug launch profiles UI
+
+`--urls=http://raspberrypi:5055/` because remote debugging not using the "App URL" parameter.
 
 ## The extension performs the following steps:
 
